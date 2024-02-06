@@ -1469,4 +1469,577 @@ when to avoid quick sort?
 	when space is a concern
 	when you need stable sort 
 
-10
+searching algorithm
+	linenear search 
+	binary search 
+
+linear search 
+	create function with two parameters which are an array and a value 
+	loop rhough the array and check if the current array element is equal to the value 
+	if it is return the index at which the element is found 
+	if the value is never found return -1
+
+binary search 
+	binary search is faster than linear search 
+	half of the remaining elements can be elimanted at a time, instead of elimanting them one by one 
+	BS only works for sorted arrays 
+	creat function with two parameters which are a sorted array and a value 
+	create two pointers: a left pointer at the start of the array and a right pointer at the end of the array 
+	based on the lef and right pointers calculate middle pointer 
+	while middle is not equal to the value and start<=end loop:
+		if the middle is greater than the value move the right pointer down 
+		if the middle is less than the value move the left pointer up 
+	if the value is never found returnn -1 
+
+what is a graph?
+	 graph consists of a finite set of vertices(or nodes) and a set of edges which connect a pair of nodes 
+
+graph terminlogy
+	vertices (vertex):vertices are the nodes of the graph
+	edge: the edge is the line that connects pairs of vertices
+	unweighted graph: a graph which does not have a weight associated with any edge
+	weigthed graph: a graph which has a weight associated with any edge 
+	undirected graph: in case the edge of the graph do not have a direction associated with them 
+	directed graph: if the edges in a graph have a direction associated with them 
+	cyclic graph: a graph which has at least one loop 
+	acylic graph: a graph with no loop 
+	tree: it is a special case of directed acylic graphs  
+
+graph types 
+	graph 
+	directed  
+	undirected 
+	weighted 
+	unweighted
+	positive
+	negative
+
+	weighted 
+	unweighted
+	positive
+	negative
+
+	1. unweighted - undirected 
+	2.unweighted-directed 
+	3.positive-weighted -undirected 
+	4.positive- weighted-directed
+	5. negative-weighted- undirected 
+	6.negative-weighted-directed 
+
+graph reoresenation 
+	adjacency matrix: an adjacency matrix is a sqaure matrix or you can say it is a 2d array. and the elements of the matrix indicate whether pairs of vertices are adjacent or not in the graph 
+	adjacency list: an adjacency list is a collection of unorder list used to represent a graph. each list describes the set of neighbors of a vertex in the graph 
+
+	if a graph is complete or almost complete we should use adjacency matrix
+	if the number of edges are few then we should use adjacency list 
+	python dict implementation 
+
+graph traversal 
+	bfs 
+	dfs
+	it is a process of vsitng verticles in a given graph 
+	
+	breadth first search
+	BFS is an algo for traversing graph data structure.it startsat some arbitary node a graph and explores thw nighbo nodes(which are at current level) first, before moving to the next level neighbors
+	BFS - enqueue any starting vertex 
+	while queue is not empty 
+	p=dequeue()
+	if p is unvisted 
+	mark it visted 
+	enqueue all adjacent 
+	unvisted vertices of p 
+
+	depth first seach  
+	DFS is an algo for traversing a graph data structure which starts selecting some arbitary node and explores as far as possible along each edge before backtracking 
+	DFS
+	push aby starting vertex 
+	while stack is not empty 
+	p=pop()
+	if p is unvisted 
+	mark it visited 
+	push adjacent 
+	unvisted vertices of P
+
+topological sort: 
+	sorts given actions in such a way that there is depenedency of one action on another, then the depenedent action always comes later than its parent action
+
+	topological sort algo 
+	if a vertex depends on currenVertex:
+		go to that vertex and 
+		then come bacl to currenVertex
+		else 
+		push currentVertex to stack
+
+single source shortest path problem 
+	a single source problem is about finding a path between a given vertex(called source) to all other vertices in a graph such that the total distance between them (source and destination) is minimum
+	the probelm:
+		five offices in diff cities 
+		travel costs between these cities are known 
+		find the cheapest way from head office to branches iin different cities
+		BFS 
+		Dikstra;s algo 
+		bellman ford 
+
+	BFS 
+	enqueue any starting vertex 
+	while queue is not empty 
+	p=dequeue()
+	if p is unvisted 
+	mark is visited 
+	enqueue all adjacent unvisted vertices of p 
+	update parent of adjacent vertices to currenVertex
+
+why BFS not work with weighted grapgh 
+
+why does DFS not work with SSSP?
+	DFS has the tendency to go as far as possible from source hence it can never find the shortest path 
+
+
+# Dikstra's algo for SSSP
+	 Dikstra algo with negative cycle 
+	 a path is called a negative cycle if:
+	 there is a cycle(a cycle is a path of edge or vertices wherein a vertex is reachable from itself)
+	 we cannot never find a negative cycle five offices in different in a graph 
+
+
+bellman ford 
+	bellman ford algo is used to find single source shortest path problem. if there is a negative cycle it catches it and report its existence 
+	if the distance of destination vertex>(distance of source + weight between source and destinaton vertex):
+		update distance of destination vertex tp (distance of source vertex + weight between source and destination vertex)
+
+why does bellman ford run v-1 times?
+	-if any node is achieved better distance in previous iteration, then that better distance is used to imporove distance of other vertices 
+	identify worst case graph that can be given to us  
+	BFS vs bellman
+
+all pair shortest path probelm 
+	what is single source shortest path?
+	a single source problem is about finding a path between a given vertex(called source) to all other vertices in a graph such that the total disance between them (source and destination) is minimum
+		five offices in diff cities 
+		travel costs between these cities are known 
+		find the cheapest way from head office to branches iin different cities
+
+	dry ryn for all pair shortest path problem
+
+floyd warshall 
+	   
+why floyd warshall algo 
+	the vertex is not reacheable 
+	two vertices are directly connected 
+	it can be imporoved via other vertex 
+	two vertices are connected via other vertex 
+
+floyd warshall negative cycle 
+	 to go through cyle we need to go via negative cycle participating vertex at least twice 
+	 FW never runs loop twice via same vertex 
+	 hence, fw can never detect a degatove cylce
+
+minimum spanning tree 
+	a minimum spanning tree(MST) is subset of the edge connected, weighted and undirected graph:
+	connects all vertices together 
+	no cycle 
+	minimum total edge 
+
+real life problem 
+	connect five islands with bridges 
+	the cost of bridges between isliand varies on diffierent factors 
+	which bridge should be constructed so that all islands are accessible and the cost is minimum
+
+disjoint set 
+	is it is a data structure that keeps track of set of elements which are partioned into a number of disjoint and nnon overlapping sets and each sets have representative which helps in identifying that sets 
+	-make:(N) used to create intial set 
+	-union: (x,y) merge two given sets 
+	-find set: (x) returns the set name in which this element is there
+
+kruskals algo 
+	it is a greed algo 
+	it finds a minimum spanning tree for weighed undirected grapghs in two ways 
+	-add increasing cost edges at each step 
+	-avoid any cycle at each step 
+kk algo 
+	def krusla(G):
+		for each vertex:
+			makeSet(v)
+	sort each edge in non decreasing order by weight 
+	for each edge (u,v):
+		if findSet(u) != findSet(v):
+			union(u,v)
+			cost=cost+edge(u,v)
+
+prims alog 
+	it is greedy algo 
+	it finds a minimum spanning tree for weighted undirected graphs in following ways 
+	1. take any vertex  as a source set its weight to 0, and all over vertices weight to infintity 
+	2. for ever adjacent vertices if the current weight is oree than current current edge then we set it to current edge 
+	3.then we mark current vertex as visted 
+	4.repeat these steps for all vertices in increasing order of weight 
+
+
+kruska; vs prim 
+	kruskal 
+		concentraes on edges 
+		finalize edge in each iteration
+	prims
+	concentraes on vertices 
+	finalize vertex in each iteration 
+
+
+kruskal applications
+	landing cables 
+	tv network 
+	tour operations 
+	lan networks 
+	a network of pipes for drinking water or natural gas 
+	an eletric grid
+	single-cluster 
+prims applications 
+	network for roads and rail tracks connecting all the cities 
+	irrigation channcels and placing microwave towers 
+	designing a fiber-optic gride or ic 
+	traveling salesman probelm 
+	cluster analysis 
+	pathfinding algo used in AI(artifical intelligence)
+
+what is greedy algo?
+	it is an algo paradigm that builds the solution peice by peice
+	in each step it chooses the piece that offers most obvious and immediate benefit 
+	it fits perfectly for those soltuions in which  local optimal solutions lead to global solubion 
+
+	insertion sort sort 
+	selection sort 
+	topological sort 
+	prims algo 
+	kruskal 
+
+	activity selection problem 
+	coin change problem
+	fractional knapsack problem 
+
+
+greedy algo 
+	insertion sort sort 
+	selection sort 
+	topological sort 
+	prims algo 
+	it is greedy algo 
+	it finds minimum spanning tree for unweighted graphs in following ways 
+		take any vertex as a source set its weight to 0 and all other vertices weight to infintity
+		for eveyr adjacent vertices if thecurrent weight weight is more than current edge then we set it it to current edge kruskal
+		then we mark current vertex as visited
+		repeat these steps for all vertices in increasing order of weight 
+	kruskal
+	it is a greedy algo 
+	it finds a minimum spanning tree for weighted undirected graphs in two ways 
+	add increasing cost edges at each step 
+	avoid any cycle at each step 
+
+activity selection problem 
+	 given N numbers of actvies with thier start and end times. we  need to select the maximum number of activites that can be performed by a single person, assuming that as person can only work on a single activity at a time 
+
+activity selection problem 
+	sort activities based on finish line 
+	select first acticity from sorted array and print 
+	for all remain activities:
+		if the start time of this acticity is greater or eqaul to the finish time of previosuly selected activited then select this activity and print it 
+
+coin change problem 
+	you are given coins of different denominations and total amount of money. find the minimum number of coins that you need to make yup the given amount.
+	infintite supply of denominations:{1,2,5,10,50,100,1000}
+
+	find the biggest coin that is less than given total number 
+	add coin to the result and substract coin from total number 
+	if V is equal to zero:
+		then print result 
+	else:
+	 repeat step 2 and 3 
+
+fractional knapsack problem
+	given set of items with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible
+	calculate the density or ratio for each item 
+	sort items based on this ratio 
+	take items with the highest ratio until weight allows 
+	add the next item as much(fractional) as we can 
+
+
+what is divide and conquer?
+	divide and conquer is an algo design paradigm which works by recursively breaking down a problem into subproblems of similar type, until these become simple enough to be solved directly. the solution are then combined to give a solution to the original probem 
+
+	optimal substructure 
+	if any problem overall solution can be constructed from the optimal solutions of its subproblem thenthis problem has optimal substructure
+
+	why do we need it 
+	it is very effective when the problem has optimal substructure property 
+
+common divide and conquer algo 
+	merge sort 
+	quick sort 
+
+	fib series 
+	defintion: a series of numbers in which each number is the sum of the two preceding numbers. first two numbers by definition are 0 and 1
+
+	fib(N):
+	if n<1 return error
+	if n=1 return 0 
+	if n=1 return 1
+	else 
+		return fib(N-1) + fib(N-2)
+
+number factor 
+	problem statement:
+	given N, find the number of ways to express N as a sum of 1,3 and 4
+
+house robber 
+	problem statment:
+	given N number of houses along the street with some amount of money 
+	adjacent houses cannot be stolen
+	find the maximum amount that can be stolen 
+
+	maxValueHouse(houses, currentHouse):
+	if currentH>length of houses
+		return 
+	else 
+		stealfirsthouse=currentH+maxValueHouse(house, currentHouse)
+		skipFirstHouse=maxValueHouse(house, currentHouse+1)
+		return max(stealfirsthouse, skipFirstHouse)
+
+convert string 
+	problem statment:
+	s1 and s2 are given strings 
+	convert s2 and s1 using delete, insert or replace operations 
+	find the minimum count of operations 
+
+	findMinOp(s1,s2, index, index2):
+	if index1 == len(s2)-index2
+	return len(s2)-index
+	if index2 ==len(s2)
+	return len(s1)-index1
+	if s1[index1]==s2[index2]
+	return findMinOp(s1, s2, index1+1, index2+1)
+
+	else 
+	delOp=1+findMinOp(s1, s2, index1, index2+1)
+	insertOp=1+findMinOp(s1,s2,index1+1, index2)
+	replaceOp=1+findMinOp(s1,s2, index1+1, index2+1)
+	return min(deletOp, insertOp, replaceOp)
+
+zero knapsack problem 
+	problem statement:
+	given the weights and profits of N items 
+	find the maximum profit within given capacity of C 
+	items cannot broken 
+
+	zoKnapsack(items, capacity, curremtIndex):
+	if capacity<=0 or curremtIndex>len(profits)
+	return 0
+	elif currentItemWeight<=capacity 
+	profit1=currentItemProfit+zoKnapsack(items, capacity-currentItemWeight, nextitem)
+	prodit=zoKnapsack(items, capacity-currentItemWeight, nextitem)
+	return max(profit, profit2)
+	else 
+	return 0
+
+the longest common subsquence
+	problem statment: 
+	s1 and s2 are gievn strings 
+	find the lenth of the longest subsquence which is common to both strings 
+	subquence: a sequence that can be driven from another sequence by deleting some elements without changing the order of them 
+
+	findCLS(s1,s2,index1,index2):
+	if index==len(s1) or index2==len(s2):
+		return 0
+		if s1[index1]==s2[index2]
+		return 1+findCLS(s1,index1+1, index2+1)
+	else 
+		op1=findCLS(s1,s2,index1,index2+1)
+		op=findCLS(s1, s2, index1+1, index2)
+		return max(op1, op2)
+
+minimum cost to reach the last cell 
+	 probelm statement 
+	 2d matrix is given  
+	 each cell has a cost associated with it for accessing 
+	 we need to start from (0.0) cell and go till(n-1,n-1)cell 
+	 we can go only to ight or down cell from current cell 
+	 find the way in which the cost is minimum
+
+	findMinCost(twoDArray, row, col):
+	if row==-1 or col ==-1:
+	return inf 
+	if row==0 and col==0:
+	return twoDArray[row][col]
+	else 
+	op1=findMinOp(twoDArray, row-1, col)
+	op=findMinOp(twoDArray, row, col-1)
+	return cost[row][col]+min(op1, op2)
+
+number of paths to reach the last cell with given cost 
+	problem statement: 
+	2d matrix is given 
+	each cell has a cost associated with it for accesssing 
+	we need to started from (0.0) cell and go till (n-1, n-1)
+	we can go only to right or down cell from current cell 
+	we are given total cost to reach the last cell 
+	find the number of ways to reach end of matrix with given 'total cost'
+
+	numOfPaths(twoDArray, row, col, cost):
+	if cost<0:
+		return 0
+	elif row==0 and col ==0:
+		if twoDArray[0][0]-cost==0:
+			return 1
+		else: 
+			return 0
+		elif row==0:
+			retrun numOfPaths(twoDArray, 0,-1, cost - twoDArray[row][col])
+		elif col ==0:
+			return numOfPaths(twoDArray,row-1, col, cost-twoDArray[row][col])
+		else: 
+			op1=numOfPaths(twoDArray, row-1, col, cost- twoDArray[row][col])
+			op2=numOfPaths(twoDArray, row-1, col, cost-twoDArray[row][col])
+			return op1+op2
+
+dynamic programming 
+	dynamic prgraminng is an algo techinque for solving an optimization problem by breaking down it down into small problems and utlizing the fact that the optimization prooblem by breaking it down into simpler subproblems and utlizing the fact that the optimal solution to the overall problem depends upon the optimal solution to its sub problem 
+
+	top down memoization 
+	solve the bigger problem by recursively finding the solution to smmalller subproblems. whenever we solve a sub problem, we cache its results so that we dont end up solving it repeatedly if its called multiple times. this techinque of storing the results of already solved subproblems is called memoization
+	fib(n):
+	if n<1 return error message 
+	if n=1 return 0
+	if n=2 return 1
+	if not n in memo:
+		memo[n]=fib(n-1,memo)+fib(n-2, memo)
+	return memo[n]
+
+	bottom up with tabulation 
+	tabulation is the opposite of the top down-down approach and avoids recursion. in this approach, we solve the problem 'bottom-up'(i.e by solving all the related subproblem first). this is done by filling up a table. based on the results in the table, the solution to the top/ original problem is then computed 
+
+	def fibTab(n):
+		tb=[0,1]
+		for i in range(2, n + 1):
+			tb.append(tb[i-1]+tb[i-2])
+		return yb[n-1]
+
+	top vs down up 
+		does it have optimal substructure property 
+		does it have overlapping subproblems property 
+
+is merge sort dynamic programming 
+	does it have optimal substructure property 
+		does it have overlapping subproblems property 
+
+dynamic prgamming - number factor problem 
+	problem statment:
+	given n, find the number of ways to express N as a sum of 1,3 and 4 
+	bumFact(n):
+	if n in (0,1,2) return 1
+	if n =3 return 2 
+	else 
+	return bumFact(n=1) + bumFact(n-3) + bumFact(n-4)
+
+	if n in (0,1,2) return 1
+	if n=3 return 2
+
+	else 
+	rec1=numfact(n-1)
+	rec2=numbfact(n-3)
+	rec3=numfact(n-4)
+	return rec1+rec1+rec3
+
+
+	if n in (0,1,2) return 1
+	if n=3 return 2
+	elif n in dp return[dp]
+	else 
+	rec1=numfact(n-1)
+	rec2=numbfact(n-3)
+	rec3=numfact(n-4)
+	return rec1+rec1+rec3
+	dp[n]=rec1+rec2+rec3
+
+	def numFat(n):
+		tb=[1,1,1,2]
+		for i in rnage(4, n+1):
+			tb.append(tb[i-1]+tb[i-3]+tb[i-4])
+		return tb[n]
+
+house robber 
+	problem statment:
+	given N number of houses along with the street with some amount of money 
+	adjacent houses cannot be stolen 
+	find the maximum amount that can be stolen 
+
+	maxValue(houses, currentHouse):
+	if currentHouse>leng of houses
+	return 0
+	else 
+	stealfirsthouse=currentHouse+maxValueHouse(houses, currentHouse+2)
+	skipFirstHouse=maxValueHouse(houses, currentHouse+1)
+	return max(stealfirsthouse, skipFirstHouse)
+
+	maxValue(houses, currentHouse, tempDict):
+	if currentHouse>leng of houses
+	return 0
+	else 
+	if currenthouse not in tempDict:
+	stealfirsthouse=currentHouse+maxValueHouse(houses, currentHouse+2)
+	skipFirstHouse=maxValueHouse(houses, currentHouse+1)
+	return max(stealfirsthouse, skipFirstHouse)
+
+	def houseRobber(houses, currentIndex):
+		tempArr=[0]*(len(houses)+2)
+		for i in range(len(houses)-1, -1, -1):
+			tempArr[i]=max(houses[i]+tempArr[i+2], tempArr[i+1])
+		return tempArr[0]
+
+	convert string 
+		problem statment:
+		s1 and s2 are given strings 
+		convert s2 to s1 using delete, insert or replace operations 
+		find the minimum count of edit operations 
+
+		findMinOp(s1,s2, index1, index2):
+		if index1==len(s1)
+		return len(s2)-index2
+		if index2==len(s2)
+		return len(s1)-index1
+		if s1[index]==s2[index2]
+		return findMinOp(s1, s2, index1+1, index2+1)
+		else 
+		delOp=1+findMinOp(s1,s2,index1,index2+1)
+		insertOP=1+findMinOp(s1,s2,index1+1,index2)
+		replaceOp=1+findMinOp(s1,s2,index1+1,index2+1)
+		return min(deletOp, insertOp, replaceOp)
+
+		findMinOp(s1,s2, index1, index2, tempDict):
+		if index1==len(s1)
+		return len(s2)-index2
+		if index2==len(s2)
+		return len(s1)-index1
+		if s1[index]==s2[index2]
+		return findMinOp(s1, s2, index1+1, index2+1)
+		else 
+		dictKey=str(index1)+str(index2)
+		id dictKey not in tempDict
+		delOp=1+findMinOp(s1,s2,index1,index2+1)
+		insertOP=1+findMinOp(s1,s2,index1+1,index2)
+		replaceOp=1+findMinOp(s1,s2,index1+1,index2+1)
+		tempDict[dictKey]=min(delOp, insertOp, replaceOp)
+	return tempDict[dictKey]
+
+zero one skanpsack 
+	given the weight and profits of N items
+	find the maximum profit within given capacity 
+	items cannot be broken 
+
+	zKnapsack(items, capacity, currentIndex):
+	if capacity<=or currentIndex<0 or currentIndex>len(profits)
+	return 0
+	elif currentItemWeight<=capacity
+	profit1=currentItemProfit+zoKnapsack(items, capacity- currentItemWeight, nextitem)
+	profit2=zoKnapsack(items, capacity, nextitem)
+	return max(profit1, profit2)
+	else 
+	return 0
+
+
