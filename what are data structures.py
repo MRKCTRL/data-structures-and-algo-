@@ -2042,4 +2042,117 @@ zero one skanpsack
 	else 
 	return 0
 
+	zKnapsack(items, capacity, currentIndex, tempDict):
+	if capacity<=or currentIndex<0 or currentIndex>len(profits)
+	return 0
+	elif dictKey in tempDict
+	return tempDict[currentIndex]
+	elif currentItemWeight<=capacity
+	profit1=currentItemProfit+zoKnapsack(items, capacity- currentItemWeight, nextitem)
+	profit2=zoKnapsack(items, capacity, nextitem)
+	tempDict[dictKey]=max(profit1, profit2)
+	return tempDict[dictKey]
+	else 
+	return 0
 
+	def zoKnapsack(profits, weights, capacity):
+		if capacity <=0 or len(profits)==0 or len(weights)!= len(profits):
+			return 0
+		numberOfRows=len(profits)+1
+		dp=[[0 for i in range(capacity+2)] for j in range(numberOfRows)]
+		for row in range(numberOfRows-2,-1,-1):
+			for column in range(1, capacity+1):
+				profit1=0 
+				profit2=0 
+				if weights[row] <= column:
+					profit1=profits[row]+dp[row + 1][column - weigths[row]]
+					profit2=dp[row + 1][column]
+					dp[row][column]=max(profit1, profit2)
+					dp[row][column]=max(profit1, profit2)
+				return dp[0][capacity]
+
+convert string 
+	problem statement:
+	s1 ans s2 are given strings 
+	convert s1 to s2 using delete, insert or replace operations 
+	find the minimum count of edit operations 
+
+	findMinOp(s1, s2, s3, index, index2):
+	if index1==len(s1)
+	return len(s2)-index2
+	if index2==len(s2)
+	return len(s1)-index1
+	if s1[index1]==s2[index2]
+	return findMinOp(s1,s2, index+1,index2+1)
+
+	else 
+	delOp=1+findMinOp(s1,s2,index1, index2+1)
+	insertOP=1+findMinOp(s1,s2,index1+1, index2)
+	replaceOp= 1+findMinOp(s1,s2,index1+1, index2+1)
+	return min(deletOp, insertOp, replaceOp)
+
+	findMinOp(s1, s2, s3, index, index2, tempDict):
+	if index1==len(s1)
+	return len(s2)-index2
+	if index2==len(s2)
+	return len(s1)-index1
+	if s1[index1]==s2[index2]
+	return findMinOp(s1,s2, index+1,index2+1)
+
+	else 
+	dictkey=str(index1)+st(index2)
+	if dictkey not in tempDict:
+	delOp=1+findMinOp(s1,s2,index1, index2+1)
+	insertOP=1+findMinOp(s1,s2,index1+1, index2)
+	replaceOp= 1+findMinOp(s1,s2,index1+1, index2+1)
+	tempDict[dictkey]=min(delOp, insertOp, replaceOp)
+	return temp[dictkey]
+
+recipe for problem solving 
+	algo: is set of steps to accomplish  a certain task 
+	understand the problem
+	explore examples
+	break it down 
+	solve/simplify 
+	look back refactor 
+
+step 1 
+	understand the problem
+	1.can we restate the p[roblem in our words 
+	2. what are the inputs that go into the problem 
+	3.what are the outputs that come from the problem 
+	4.can we outputs be determined from the inputs??  in other words do we have enough information to solve this probelm 
+	5.what should i label the import piece of that are part of a problem?
+
+	1.can we restate the p[roblem in our words 
+	implement adddition
+	2. what are the inputs that go into the problem 
+	integer? float?or?
+	3.what are the outputs that come from the problem 
+	integer? float? or?
+	4.can we outputs be determined from the inputs??  in other words do we have enough information to solve this probelm 
+	yes
+	5.what should i label the import piece of that are part of a problem?
+	add, sum 
+
+step 2 
+	explore examples 
+	start with simple examples
+	progress to complex examples 
+	explore examples with empty 
+	explore the examples with invalid inputs 
+
+step 3
+	break it down 
+	write out the steps that you need to take.
+
+step 4
+	solve/ simplify 
+	solve the problem 
+	if you cannot...
+	simplify the problem 
+		find the core difficulty 
+		temporarily ignore that difficulty 
+		write a simplified solution 
+		then incorarproate that difficulty
+	
